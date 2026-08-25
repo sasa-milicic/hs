@@ -1,0 +1,8 @@
+node_modules
+dist
+package-lock.json
+.angular
+_standalone
+_ai-reference
+_mock-server
+docs

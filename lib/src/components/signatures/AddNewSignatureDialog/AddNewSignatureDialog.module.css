@@ -1,0 +1,139 @@
+.overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.4);
+}
+
+.dialog {
+  background: #fff;
+  color: #000;
+  border-radius: 4px;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.3);
+  padding: 24px;
+  width: 420px;
+  max-width: calc(100vw - 32px);
+  box-sizing: border-box;
+}
+
+.title {
+  margin: 0 0 20px;
+  font-size: 20px;
+  font-weight: 500;
+}
+
+.fields {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.input,
+.select {
+  width: 100%;
+  padding: 8px 0;
+  font-size: 16px;
+  border: none;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.4);
+  background: transparent;
+  color: rgba(0, 0, 0, 0.87);
+  font-family: inherit;
+  box-sizing: border-box;
+}
+
+.input::placeholder {
+  color: rgba(0, 0, 0, 0.6);
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.fieldLabel {
+  font-size: 13px;
+  font-weight: 700;
+  color: rgba(0, 0, 0, 0.6);
+}
+
+.checkboxRow {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.checkboxRow:has(input:disabled) {
+  cursor: default;
+  color: rgba(0, 0, 0, 0.5);
+}
+
+.radioGroup {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.radioOption {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.error {
+  font-size: 12px;
+  color: #c62828;
+}
+
+.methodList {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.actions {
+  margin-top: 24px;
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+}
+
+.actions button {
+  border: none;
+  background: transparent;
+  padding: 8px 16px;
+  font-size: 14px;
+  font-weight: 700;
+  text-transform: uppercase;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.cancelButton {
+  color: #000;
+}
+
+.cancelButton:hover {
+  background: rgba(0, 0, 0, 0.06);
+}
+
+.confirmButton {
+  color: var(--hs-accent, #1976d2);
+}
+
+.confirmButton:hover:not(:disabled) {
+  background: rgba(0, 0, 0, 0.06);
+}
+
+.confirmButton:disabled {
+  color: rgba(0, 0, 0, 0.38);
+  background: rgba(0, 0, 0, 0.12);
+  cursor: default;
+}

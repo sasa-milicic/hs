@@ -1,0 +1,107 @@
+/* Live-sampled from the running legacy app (2026-08-14) — closes the visual-
+   parity gap flagged in the Phase 6 write-up. `.info-message`/page-jump
+   label have no card/shadow styling in legacy (plain text, `.info-message`
+   keeps a white background, the page-jump label doesn't) and action buttons
+   have no box-shadow either — an earlier "pill" look was invented, not
+   sampled; corrected here. */
+
+.placer {
+  position: absolute;
+  box-sizing: border-box;
+  border: 2px dashed var(--hs-accent, #1976d2);
+  z-index: 10;
+}
+
+.image {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  pointer-events: none;
+}
+
+.dragHandle {
+  position: absolute;
+  inset: 0;
+  cursor: grab;
+  touch-action: none;
+}
+
+.dragging .dragHandle {
+  cursor: grabbing;
+}
+
+.topDecoration {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 100%;
+  margin-bottom: 8px;
+  display: flex;
+  justify-content: center;
+}
+
+.pageJumpLabel {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 16px;
+  color: #000;
+  background: transparent;
+  white-space: nowrap;
+}
+
+.pageJumpSelect {
+  font-size: 16px;
+}
+
+.bottomDecoration {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 100%;
+  margin-top: 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.infoMessage {
+  font-size: 16px;
+  color: #000;
+  background: #fff;
+  padding: 0 5px;
+  white-space: nowrap;
+}
+
+.actions {
+  display: flex;
+  gap: 8px;
+}
+
+.actions button {
+  border: none;
+  height: 36px;
+  padding: 0 16px;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.cancelButton {
+  background: #fff;
+  color: #000;
+}
+
+.confirmButton {
+  background: var(--hs-accent, #1976d2);
+  color: #fff;
+}
+
+.actions button:disabled {
+  opacity: 0.5;
+  cursor: default;
+}

@@ -1,0 +1,41 @@
+.sessionActions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.sessionActions button {
+  border: none;
+  padding: 8px 16px;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  border-radius: 4px;
+  white-space: nowrap;
+}
+
+.sessionActions button:disabled {
+  opacity: 0.4;
+  cursor: default;
+}
+
+.cancelButton {
+  background: transparent;
+  color: #000;
+}
+
+.cancelButton:hover {
+  background: rgba(0, 0, 0, 0.06);
+}
+
+.finalizeButton {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  background: var(--hs-accent, #1976d2);
+  color: #fff;
+}
+
+.finalizeButton:hover {
+  filter: brightness(0.92);
+}

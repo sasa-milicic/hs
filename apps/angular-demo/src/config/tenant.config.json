@@ -1,0 +1,33 @@
+{
+  "meta": {
+    "signActions": ["PADSIGN", "QUALSIGN", "REMOTESIGN", "MINISIGN"],
+    "defaultVSS": true,
+    "showSignatureDialog": false,
+    "finalizeU": false,
+    "deliveryCategory": "",
+    "allowAdditionalSignatures": true,
+    "allowAdditionalStamps": true,
+    "locale": "de",
+    "allowInvitation": true,
+    "remoteSignatureValidityPeriod": "",
+    "remoteSignatureValidityUntil": "",
+    "consentText": "",
+    "mailBody": "",
+    "email": "",
+    "phone": "",
+    "username": "",
+    "signerName": "",
+    "standAloneUI": true
+  },
+  "metaStamp": {
+    "departmentName": "dp2",
+    "stampTemplateInputs": {
+      "docindex_$DOCDATE": "24-03-2020",
+      "docindex_Geschäftszahl": "123",
+      "user_compartmentName": "ITG",
+      "user_compartment": "ITG2",
+      "user_prename": "Test",
+      "user_secname": "Benutzer"
+    }
+  }
+}

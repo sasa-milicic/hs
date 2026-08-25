@@ -1,0 +1,179 @@
+@if (session(); as entry) {
+  <div class="viewer-overlay">
+    <app-hybrid-sign-host
+      [tenantId]="entry.tenantId"
+      [language]="entry.language"
+      [transactionId]="entry.transactionId"
+      [secretKey]="entry.secretKey"
+      [signee]="entry.signee"
+      [apiEndpoint]="apiEndpoint"
+      [sessionEndEvent]="sessionEndEvent()"
+      (sessionEnd)="onSessionEnd($event)"
+    />
+  </div>
+} @else {
+  <div class="page">
+    <header class="header">
+      <div class="header__navigation">
+        <a class="header__logo" href="https://www.post.at">
+          <img src="post-horn.svg" alt="Österreichische Post" />
+        </a>
+        <div class="header__controls">
+          <div class="header__tenant-select" role="group" aria-label="Tenant">
+            @for (id of tenantIds; track id) {
+              <button
+                type="button"
+                disabled
+                class="header__tenant-button"
+                [class.header__tenant-button--active]="id === tenantId()"
+                [attr.aria-pressed]="id === tenantId()"
+                (click)="selectTenant(id)"
+              >
+                Tenant {{ id }}
+              </button>
+            }
+          </div>
+          <div
+            class="header__language-select"
+            role="group"
+            aria-label="Language"
+          >
+            @for (code of languages; track code) {
+              <button
+                type="button"
+                disabled
+                class="header__language-button"
+                [class.header__language-button--active]="code === language()"
+                [attr.aria-pressed]="code === language()"
+                (click)="selectLanguage(code)"
+              >
+                {{ code.toUpperCase() }}
+              </button>
+            }
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main class="form-wrapper">
+      <div class="form-container">
+        <h1 class="form-heading">PDF unterschreiben</h1>
+        <div class="form-content">
+          <div
+            class="upload"
+            (dragover)="onDragOver($event)"
+            (drop)="onDrop($event)"
+          >
+            <div class="upload__wrapper">
+              <div class="upload__icon" aria-hidden="true">
+                <svg viewBox="0 0 72 72" width="72" height="72">
+                  <rect
+                    x="16"
+                    y="10"
+                    width="40"
+                    height="52"
+                    rx="3"
+                    fill="none"
+                    stroke="#0078c8"
+                    stroke-width="3"
+                  />
+                  <path
+                    d="M36 28v20M28 36l8-8 8 8"
+                    fill="none"
+                    stroke="#0078c8"
+                    stroke-width="3"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                </svg>
+              </div>
+              <p class="upload__title">
+                {{
+                  isUploading()
+                    ? 'Wird hochgeladen…'
+                    : 'Datei per Drag und Drop ablegen oder'
+                }}
+              </p>
+              <span class="upload__button">Datei auswählen</span>
+              <input
+                class="upload__file-input"
+                type="file"
+                accept="application/pdf"
+                multiple
+                aria-label="Datei auswählen"
+                [disabled]="!canUpload() || isUploading()"
+                (change)="onFileChange($event)"
+              />
+            </div>
+          </div>
+          @if (uploadError()) {
+            <p class="email-error">{{ uploadError() }}</p>
+          }
+
+          <form class="extras" autocomplete="off" novalidate>
+            <div class="checkbox">
+              <input
+                id="checkbox"
+                type="checkbox"
+                [checked]="signatureFlow()"
+                (change)="onSignatureFlowChange($event)"
+              />
+              <label for="checkbox">
+                Ich will einen Signaturlauf an mehrere Personen versenden.
+              </label>
+            </div>
+
+            @if (signatureFlow()) {
+              <div class="email">
+                <label for="email">
+                  Bitte geben Sie Ihre E-Mail Adresse ein, auf der Sie das von
+                  allen Parteien unterschriebene Dokument empfangen wollen:
+                </label>
+                <input
+                  id="email"
+                  type="text"
+                  [value]="email()"
+                  (input)="onEmailInput($event)"
+                />
+                @if (showEmailInvalid()) {
+                  <p class="email-error">
+                    Bitte geben Sie eine gültige E-Mail-Adresse an.
+                  </p>
+                }
+                @if (showEmailRequired()) {
+                  <p class="email-error">Pflichtfeld.</p>
+                }
+              </div>
+              <div class="note">
+                <label for="note">Notiz:</label>
+                <textarea
+                  id="note"
+                  [value]="note()"
+                  (input)="onNoteInput($event)"
+                ></textarea>
+              </div>
+            }
+          </form>
+        </div>
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer__item">
+        <div class="footer__separator"></div>
+        <h2 class="footer__title">HOTLINE: +43 800 2088 23</h2>
+        <span class="footer__span">Servicezeiten:</span>
+        <span class="footer__span">
+          Montag - Donnerstag (werktags): 08:00 - 17:00
+        </span>
+        <span class="footer__span">Freitag (werktags): 08:00 - 14:00</span>
+        <span class="footer__span">
+          Support:
+          <a href="mailto:servicedesk&#64;sendhybrid.com"
+            >servicedesk&#64;sendhybrid.com</a
+          >
+        </span>
+      </div>
+    </footer>
+  </div>
+}

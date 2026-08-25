@@ -1,0 +1,188 @@
+/* Colors below were sampled from the live legacy client via getComputedStyle
+   (its own theming comes from generated Angular Material SCSS, not a static
+   stylesheet we could read directly). */
+
+.hybridSign {
+  /* Neutral fallback theme — matches what the legacy client renders for a
+     tenantId it doesn't have branding for. */
+  --hs-accent: #1976d2;
+  --hs-thumbnail-active-border: rgba(208, 208, 208, 0.5);
+
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  background: #fff;
+  color: #000;
+  font-family: 'Titillium Web', HelveticaNeue, Arial, sans-serif;
+  box-sizing: border-box;
+  position: relative;
+}
+
+.hybridSign.tenant1 {
+  --hs-accent: #0081b4;
+  --hs-thumbnail-active-border: rgba(253, 194, 0, 0.5);
+}
+
+.hybridSign.tenant2 {
+  --hs-accent: #0065b2;
+  --hs-thumbnail-active-border: rgba(255, 153, 0, 0.5);
+}
+
+.hybridSign.tenant3 {
+  --hs-accent: #da291c;
+  --hs-thumbnail-active-border: rgba(208, 208, 208, 0.5);
+}
+
+.hybridSign.tenant4 {
+  --hs-accent: #00529e;
+  --hs-thumbnail-active-border: rgba(234, 246, 254, 0.5);
+}
+
+.hybridSign.tenant5 {
+  --hs-accent: #0081b4;
+  --hs-thumbnail-active-border: rgba(253, 194, 0, 0.5);
+}
+
+.hybridSign.tenant6 {
+  --hs-accent: #0078c8;
+  --hs-thumbnail-active-border: rgba(254, 220, 0, 0.5);
+}
+
+.hybridSign.tenant7 {
+  --hs-accent: #ffbf01;
+  --hs-thumbnail-active-border: rgba(8, 43, 162, 0.5);
+}
+
+.hybridSign.tenant8 {
+  --hs-accent: #0d1352;
+  --hs-thumbnail-active-border: rgba(36, 50, 130, 0.5);
+}
+
+.hybridSign.tenant9 {
+  --hs-accent: #0081b4;
+  --hs-thumbnail-active-border: rgba(253, 194, 0, 0.5);
+}
+
+.hybridSign.tenant10 {
+  --hs-accent: #13387f;
+  --hs-thumbnail-active-border: rgba(19, 56, 127, 0.5);
+}
+
+.message {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  text-align: center;
+  color: #000;
+  background: #fff;
+}
+
+.messageError {
+  color: #c62828;
+}
+
+.body {
+  display: flex;
+  flex: 1;
+  min-height: 0;
+  position: relative;
+}
+
+.sidebarOpener,
+.sidebarOpenerOpen {
+  flex-shrink: 0;
+  z-index: 2;
+  background: #fff;
+}
+
+.sidebarOpener {
+  width: 45px;
+  border-left: 1px solid rgba(0, 0, 0, 0.12);
+}
+
+.sidebarOpenerOpen {
+  width: 45px;
+}
+
+.sidebarOpenerButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: 10px 0 0;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  color: #000;
+}
+
+.sidebarOpenerIcon {
+  width: 32px;
+  height: 32px;
+}
+
+.sidebarOpenerOpen .sidebarOpenerIcon {
+  transform: rotate(180deg);
+}
+
+.accordion {
+  position: absolute;
+  bottom: 8px;
+  left: 0;
+  right: 0;
+  z-index: 2;
+  background: #fff;
+  box-shadow: 0 3px 6px #dbdbdb;
+}
+
+.accordionHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  height: 48px;
+  padding: 0 16px;
+  border: none;
+  background: transparent;
+  font-size: 16px;
+  font-weight: 500;
+  color: rgba(0, 0, 0, 0.87);
+  cursor: pointer;
+  box-sizing: border-box;
+}
+
+.accordionChevron {
+  width: 16px;
+  height: 16px;
+  transform: rotate(180deg);
+}
+
+.accordionChevronOpen {
+  composes: accordionChevron;
+  transform: rotate(0deg);
+}
+
+.pdfPane {
+  position: relative;
+  flex: 1;
+  min-width: 0;
+  min-height: 0;
+  display: flex;
+}
+
+.pdfMessage {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  text-align: center;
+  color: #000;
+  background: #fff;
+}

@@ -1,0 +1,102 @@
+/* Draggable via `useDialogPosition` (matches `PosSignatureDialog`'s
+   pattern) — `.dialog` is positioned by itself via inline style
+   (anchor/drag state), not centered by a flex `.overlay`. */
+.overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  background: rgba(0, 0, 0, 0.4);
+}
+
+.dialog {
+  position: fixed;
+  background: #fff;
+  color: #000;
+  border-radius: 4px;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.3);
+  padding: 24px;
+  max-width: calc(100vw - 32px);
+  box-sizing: border-box;
+}
+
+.dragHandle {
+  position: absolute;
+  top: -24px;
+  left: -24px;
+  right: -24px;
+  height: 50px;
+  cursor: grab;
+  touch-action: none;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.title {
+  font-size: 25px;
+  font-weight: 500;
+}
+
+.controlButtons {
+  display: flex;
+  gap: 4px;
+}
+
+.controlButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  border: none;
+  border-radius: 50%;
+  background: transparent;
+  color: #000;
+  opacity: 0.6;
+  cursor: pointer;
+}
+
+.controlButton:hover {
+  opacity: 1;
+  background: rgba(0, 0, 0, 0.04);
+}
+
+.navigation {
+  margin-top: 12px;
+  margin-bottom: 16px;
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+}
+
+.signatureText {
+  font-size: 15px;
+  font-weight: 400;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.signaturePage {
+  font-size: 15px;
+  color: rgba(0, 0, 0, 0.6);
+}
+
+.embeddedForm {
+  display: block;
+  border: none;
+}
+
+.loading {
+  width: 420px;
+  height: 280px;
+  max-width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0.6;
+}

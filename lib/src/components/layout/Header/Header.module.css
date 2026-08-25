@@ -1,0 +1,102 @@
+.header {
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+  font-size: 20px;
+}
+
+/* Legacy's `.session-save-section` is `position: absolute; top: -45px`,
+   pulling the Cancel/Sign/Save buttons out of the bordered toolbar row
+   entirely so they render as their own row above it (`header.component.scss`),
+   spanning the full `:host` width (unconstrained by the sidebar-alignment
+   spacers below) with `justify-content: flex-end` — flush to the true right
+   edge, not the narrower PDF-column edge `.toolbarRow` aligns to. Reproduced
+   here as a real second flex row instead of an absolute-position hack — same
+   visual result (two rows, actions flush right on top), no fragile offset
+   math tied to a specific row height. Always rendered (not conditional on
+   `showSessionActions`) so this band's height stays reserved and the toolbar
+   row below never jumps when actions show/hide — matching legacy's own fixed
+   `margin-top: 48px` reservation, which isn't conditional either. */
+.actionsRow {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  min-height: 48px;
+  padding: 7px 24px;
+  box-sizing: border-box;
+}
+
+.toolbarRow {
+  display: flex;
+  align-items: center;
+  position: relative;
+  height: 50px;
+  border-top: 1.25px solid rgba(0, 0, 0, 0.12);
+  border-bottom: 1.25px solid rgba(0, 0, 0, 0.12);
+  box-sizing: border-box;
+  --thumbs: 0px;
+  --sigs: 0px;
+  /* Half the viewer-controls cluster — used so the overlaid document name
+     truncates before it runs under the buttons (which stay PDF-centered). */
+  --toolbar-half: 260px;
+}
+
+.toolbarRow.hasThumbnails {
+  --thumbs: 130px;
+}
+
+.toolbarRow.hasSignatures {
+  --sigs: max(20%, 228px);
+}
+
+/* Mirror Thumbnails' (130px fixed) and SignaturesSidebar's (20%/min-228px)
+   own widths exactly, so `.headerMain` below spans precisely the same
+   horizontal range as the PDF column in `.body` — the header itself spans
+   the full window regardless of sidebar visibility, so without these
+   `.centerSection` would center on the full window instead of the (usually
+   off-center, sidebar-flanked) PDF area. */
+.thumbnailsSpacer {
+  width: 130px;
+  flex-shrink: 0;
+}
+
+.sidebarSpacer {
+  width: 20%;
+  min-width: 228px;
+  flex-shrink: 0;
+}
+
+.headerMain {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+  min-width: 0;
+  position: relative;
+  z-index: 2;
+}
+
+.centerSection {
+  display: flex;
+  align-items: center;
+}
+
+.documentName {
+  position: absolute;
+  left: 16px;
+  top: 0;
+  bottom: 0;
+  z-index: 1;
+  box-sizing: border-box;
+  max-width: max(
+    0px,
+    calc(
+      var(--thumbs) + (100% - var(--thumbs) - var(--sigs)) / 2 -
+        var(--toolbar-half) - 16px
+    )
+  );
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  line-height: 50px;
+}

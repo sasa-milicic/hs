@@ -1,0 +1,80 @@
+.controls {
+  display: flex;
+  align-items: center;
+}
+
+.group {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 0 10px;
+  border-left: 1px solid rgba(0, 0, 0, 0.12);
+}
+
+.group:last-child {
+  border-right: 1px solid rgba(0, 0, 0, 0.12);
+}
+
+.pagesInfo {
+  opacity: 0.6;
+  margin-right: 8px;
+  font-variant-numeric: tabular-nums;
+}
+
+.iconButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  border: none;
+  border-radius: 50%;
+  background: transparent;
+  color: #000;
+  opacity: 0.6;
+  cursor: pointer;
+}
+
+.iconButton:hover:not(:disabled) {
+  opacity: 1;
+  background: rgba(0, 0, 0, 0.04);
+}
+
+.iconButton:disabled {
+  cursor: default;
+  opacity: 0.25;
+}
+
+.zoomSelect {
+  margin: 0 8px;
+  padding: 4px 2px;
+  font-size: 16px;
+  width: 90px;
+  border: none;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+  background: transparent;
+  color: #000;
+}
+
+/* Legacy mobile overflow is two stacked `.section` rows, not one wrapping
+   toolbar — pages on the first row, sidebar/rotate/zoom on the second
+   (`mobile-header.component.html`). */
+.controlsMenu {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 4px;
+}
+
+.controlsMenu .group {
+  border: none;
+  padding: 0;
+}
+
+.menuTools {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 4px;
+}

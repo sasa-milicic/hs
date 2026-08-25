@@ -1,0 +1,144 @@
+.overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.4);
+}
+
+.dialog {
+  background: #fff;
+  color: #000;
+  border-radius: 4px;
+  /* Live-sampled from the real legacy dialog's `.mat-mdc-dialog-surface`
+     (Material's standard elevation-24 shadow), replacing an earlier guess. */
+  box-shadow:
+    0 11px 15px -7px rgba(0, 0, 0, 0.2),
+    0 24px 38px 3px rgba(0, 0, 0, 0.14),
+    0 9px 46px 8px rgba(0, 0, 0, 0.12);
+  padding: 24px;
+  /* Live-sampled: legacy's `.full-width-dialog .mat-mdc-dialog-container`
+     is a fixed 700px, not a guess — confirmed in `_global.scss` too. */
+  width: 700px;
+  max-width: calc(100vw - 32px);
+  max-height: calc(100vh - 64px);
+  overflow-y: auto;
+  box-sizing: border-box;
+}
+
+.title {
+  margin: 0 0 20px;
+  font-size: 20px;
+  font-weight: 500;
+}
+
+.selectLabel {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 15px;
+  color: rgba(0, 0, 0, 0.6);
+}
+
+.select {
+  padding: 8px 0;
+  font-size: 15px;
+  border: none;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.4);
+  background: transparent;
+  color: rgba(0, 0, 0, 0.87);
+}
+
+.fields {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.fieldLabel {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 15px;
+  color: rgba(0, 0, 0, 0.6);
+}
+
+.fieldLabelText {
+  font-size: 15px;
+}
+
+.input,
+.textarea {
+  padding: 8px 0;
+  font-size: 15px;
+  font-family: inherit;
+  border: none;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.4);
+  background: transparent;
+  color: rgba(0, 0, 0, 0.87);
+}
+
+.textarea {
+  resize: vertical;
+  min-height: 48px;
+}
+
+.dateRow {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.hint {
+  font-size: 13px;
+  color: rgba(0, 0, 0, 0.5);
+  white-space: nowrap;
+}
+
+.error {
+  font-size: 12px;
+  color: #c62828;
+}
+
+.actions {
+  margin-top: 24px;
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+}
+
+.actions button {
+  border: none;
+  background: transparent;
+  padding: 8px 16px;
+  font-size: 14px;
+  font-weight: 700;
+  text-transform: uppercase;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.cancelButton {
+  color: #000;
+}
+
+.cancelButton:hover:not(:disabled) {
+  background: rgba(0, 0, 0, 0.06);
+}
+
+.confirmButton {
+  color: var(--hs-accent, #1976d2);
+}
+
+.confirmButton:hover:not(:disabled) {
+  background: rgba(0, 0, 0, 0.06);
+}
+
+.confirmButton:disabled,
+.cancelButton:disabled {
+  color: rgba(0, 0, 0, 0.38);
+  cursor: default;
+}

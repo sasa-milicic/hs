@@ -1,0 +1,62 @@
+.container {
+  position: absolute;
+  overflow: hidden;
+  left: 24px;
+  right: 24px;
+  top: 0;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.notification {
+  color: #fff;
+  font-size: 17px;
+  font-weight: bold;
+  margin-bottom: 5px;
+  display: flex;
+  align-items: center;
+  height: 50px;
+  padding: 6px;
+  pointer-events: auto;
+  box-sizing: border-box;
+}
+
+.message {
+  display: inline-block;
+  margin-right: 100px;
+  flex: 1;
+}
+
+.dismissButton {
+  padding: 0;
+  min-width: 0;
+  line-height: normal;
+  color: #fff;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.success {
+  width: 400px;
+  max-width: 100%;
+  background-color: #2ecc71;
+}
+
+.error {
+  width: 100%;
+  background: #e67e22;
+}
+
+.sessionExpired {
+  width: 100%;
+  background: #e67e22;
+  height: 100px;
+}
+
+.sessionExpired .message {
+  margin-right: 0;
+}

@@ -1,0 +1,46 @@
+.thumbnails {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  overflow-x: hidden;
+  overflow-y: auto;
+  width: 130px;
+  flex-shrink: 0;
+  min-width: 0;
+  padding: 16px 8px;
+  box-sizing: border-box;
+  background: transparent;
+  border-right: 1px solid rgba(0, 0, 0, 0.12);
+}
+
+.thumbnail {
+  display: block;
+  width: calc(100% - 4px);
+  max-width: 100%;
+  min-width: 0;
+  margin: 2px;
+  padding: 0;
+  border: 1px solid #e8e8e8;
+  background: #e8e8e8;
+  cursor: pointer;
+  box-sizing: content-box;
+}
+
+/* Legacy `.page-thumbnail` is an <img width: 100%> — height follows the
+   intrinsic aspect ratio. After rotate the page is landscape, so a fixed
+   canvas CSS height (with only max-width) would squash/stretch it and the
+   leftover width would grow a horizontal scrollbar in this 130px column. */
+.thumbnail canvas {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.thumbnailActive {
+  composes: thumbnail;
+  width: 100%;
+  margin: 0;
+  border-width: 3px;
+  border-color: var(--hs-thumbnail-active-border, rgba(253, 194, 0, 0.5));
+}

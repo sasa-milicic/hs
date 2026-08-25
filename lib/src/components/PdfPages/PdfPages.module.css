@@ -1,0 +1,44 @@
+.pages {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 16px;
+  overflow: auto;
+  flex: 1;
+  min-height: 0;
+  padding: 24px 0;
+  box-sizing: border-box;
+  background: #fff;
+}
+
+.pageWrapper {
+  position: relative;
+  flex-shrink: 0;
+  /* Centered when narrower than the pane; when wider, starts at the left
+     so overflow-x can reach the whole page. `align-items: center` plus a
+     child wider than the scroller would overflow both sides and the left
+     half would be unreachable. Legacy sizes pages in zoom pixels with no
+     `max-width: 100%` (`hslibZoomItem` width/height) and scrolls instead. */
+  margin: 0 auto;
+}
+
+/* Fills `.pageWrapper` exactly (which is sized synchronously from `zoom`,
+   see PdfPages.tsx) rather than being sized by its own canvas child — the
+   canvas is re-rendered asynchronously on zoom changes, so if this host
+   (or the canvas itself) were left to size itself from the canvas's
+   current pixel dimensions, the visible page content would lag a render
+   behind the already-resized wrapper, throwing off any absolutely
+   positioned overlay (stamp/signature/checkmark fields) that's positioned
+   relative to the wrapper's current (correct) bounds. */
+.canvasHost {
+  position: absolute;
+  inset: 0;
+}
+
+.canvasHost :global(canvas) {
+  display: block;
+  width: 100%;
+  height: 100%;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+}

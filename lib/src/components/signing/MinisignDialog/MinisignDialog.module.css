@@ -1,0 +1,298 @@
+/* Draggable via `useDialogPosition` (matches `PosSignatureDialog`'s
+   pattern) — `.dialog` is positioned by itself via inline style
+   (anchor/drag state), not centered by a flex `.overlay`. */
+.overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  background: rgba(0, 0, 0, 0.4);
+}
+
+.dialog {
+  position: fixed;
+  background: #fff;
+  color: #000;
+  border-radius: 4px;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.3);
+  padding: 24px;
+  /* Sampled live from the running legacy dialog: unlike touchpad/stamp/remote
+     (which pass an explicit `minWidth` to MatDialog.open), minisign's own
+     open() call passes no width config at all, so it renders at the shared
+     signature-dialog base's `:host { min-width: 932px; max-width: 1375px }`
+     — in practice, that means it always shows at 1375px unless the viewport
+     is too narrow. */
+  width: 1375px;
+  min-width: 932px;
+  max-width: calc(100vw - 32px);
+  box-sizing: border-box;
+}
+
+.dragHandle {
+  position: absolute;
+  top: -24px;
+  left: -24px;
+  right: -24px;
+  height: 50px;
+  cursor: grab;
+  touch-action: none;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.title {
+  font-size: 25px;
+  font-weight: 500;
+}
+
+.controlButtons {
+  display: flex;
+  gap: 4px;
+}
+
+.controlButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  border: none;
+  border-radius: 50%;
+  background: transparent;
+  color: #000;
+  opacity: 0.6;
+  cursor: pointer;
+}
+
+.controlButton:hover {
+  opacity: 1;
+  background: rgba(0, 0, 0, 0.04);
+}
+
+.navigation {
+  margin-top: 12px;
+  margin-bottom: 25px;
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+}
+
+.signatureText {
+  font-size: 15px;
+  font-weight: 400;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.signaturePage {
+  font-size: 15px;
+  color: rgba(0, 0, 0, 0.6);
+}
+
+.navigationControls {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  margin-left: auto;
+}
+
+.roleSelect {
+  padding: 4px 2px;
+  font-size: 14px;
+  border: none;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.4);
+  background: transparent;
+  color: rgba(0, 0, 0, 0.87);
+  font-family: inherit;
+}
+
+.navButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  padding: 0;
+  border: none;
+  border-radius: 50%;
+  background: transparent;
+  color: rgba(0, 0, 0, 0.6);
+  cursor: pointer;
+}
+
+.navButton:hover:not(:disabled) {
+  background: rgba(0, 0, 0, 0.06);
+  color: rgba(0, 0, 0, 0.87);
+}
+
+.navButton:disabled {
+  opacity: 0.3;
+  cursor: default;
+}
+
+/* Shared "bordered content box" look for both the form and the polling
+   state — legacy's `.form-container` / `.status-display-container`, both
+   sampled live at `border: 1px solid #ccc` + `min-height: 225px`. */
+.box {
+  border: 1px solid #ccc;
+  min-height: 225px;
+  box-sizing: border-box;
+}
+
+.formBox {
+  composes: box;
+  padding: 60px 35px 15px;
+  margin-bottom: 16px;
+}
+
+.minisignForm {
+  width: 550px;
+  max-width: 100%;
+  margin-bottom: 35px;
+}
+
+.formGroup {
+  display: flex;
+  align-items: center;
+  margin-bottom: 5px;
+}
+
+.linkShareGroup {
+  margin-bottom: 17px;
+}
+
+.linkShareGroup .label,
+.linkShareGroup .select {
+  width: 50%;
+}
+
+.phoneGroup {
+  margin-bottom: 38px;
+}
+
+.error {
+  margin: -4px 0 8px 30%;
+  font-size: 13px;
+  color: #c62828;
+}
+
+.label {
+  font-size: 20px;
+  color: #575756;
+  font-weight: 700;
+  margin-right: 20px;
+  width: 30%;
+  box-sizing: border-box;
+}
+
+.select,
+.input {
+  width: 70%;
+  padding: 8px 0;
+  font-size: 16px;
+  border: none;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.4);
+  background: transparent;
+  color: rgba(0, 0, 0, 0.87);
+  font-family: inherit;
+  box-sizing: border-box;
+}
+
+.explanation {
+  margin: 0;
+  font-size: 15px;
+  color: rgba(0, 0, 0, 0.6);
+  line-height: 1.4;
+}
+
+.loading {
+  height: 225px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0.6;
+}
+
+.actions {
+  margin-top: 24px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.confirmButton {
+  border: none;
+  background: var(--hs-accent, #0081b4);
+  color: #fff;
+  padding: 0 16px;
+  height: 36px;
+  font-size: 14px;
+  font-weight: 700;
+  text-transform: uppercase;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.confirmButton:hover:not(:disabled) {
+  filter: brightness(0.92);
+}
+
+.confirmButton:disabled {
+  color: rgba(0, 0, 0, 0.38);
+  background: rgba(0, 0, 0, 0.12);
+  cursor: default;
+}
+
+.pollingBox {
+  composes: box;
+  padding: 40px 0;
+  display: flex;
+}
+
+.qrSection {
+  width: 30%;
+  padding-left: 25px;
+  box-sizing: border-box;
+}
+
+.sectionTitle {
+  font-size: 20px;
+  font-weight: 700;
+  margin: 0 0 20px;
+}
+
+.qrSection canvas {
+  display: block;
+}
+
+.linkShareExplanation {
+  width: 50%;
+  padding: 0 5vw;
+  font-size: 19px;
+  box-sizing: border-box;
+}
+
+.timerSection {
+  width: 20%;
+  box-sizing: border-box;
+}
+
+.timerSection .sectionTitle {
+  margin-bottom: 21px;
+}
+
+.timerValue {
+  font-size: 55px;
+  font-variant-numeric: tabular-nums;
+}
+
+.signingExplanation {
+  display: block;
+  margin-top: 16px;
+  font-size: 15px;
+  color: rgba(0, 0, 0, 0.6);
+}

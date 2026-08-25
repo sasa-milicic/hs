@@ -1,0 +1,31 @@
+{
+  "name": "hs",
+  "private": true,
+  "type": "module",
+  "workspaces": [
+    "lib",
+    "apps/*"
+  ],
+  "scripts": {
+    "postinstall": "npm run build --workspace=lib",
+    "build": "npm run build --workspace=lib && npm run build --workspace=apps/react-demo && npm run build --workspace=apps/angular-demo",
+    "build:lib": "npm run build --workspace=lib",
+    "dev:react": "npm run dev --workspace=apps/react-demo",
+    "dev:react:edeja": "npm run dev:edeja --workspace=apps/react-demo",
+    "dev:react:services": "npm run dev:services --workspace=apps/react-demo",
+    "dev:react:production": "npm run dev:production --workspace=apps/react-demo",
+    "dev:angular": "npm start --workspace=apps/angular-demo",
+    "dev:angular:edeja": "npm run dev:edeja --workspace=apps/angular-demo",
+    "dev:angular:services": "npm run dev:services --workspace=apps/angular-demo",
+    "dev:angular:production": "npm run dev:production --workspace=apps/angular-demo",
+    "lint": "eslint .",
+    "format": "prettier --write ."
+  },
+  "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-plugin-react-hooks": "^7.1.1",
+    "globals": "^17.11.0",
+    "typescript-eslint": "^8.67.0"
+  }
+}

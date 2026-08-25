@@ -1,0 +1,8 @@
+.superpowers/
+node_modules/
+dist/
+_ai-reference
+_standalone
+_mock-server
+.claude
+docs

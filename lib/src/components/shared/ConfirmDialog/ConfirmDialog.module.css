@@ -1,0 +1,80 @@
+.overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.4);
+}
+
+.dialog {
+  background: #fff;
+  color: #000;
+  border-radius: 4px;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.3);
+  padding: 24px;
+  width: 320px;
+  max-width: calc(100vw - 32px);
+  box-sizing: border-box;
+}
+
+.title {
+  margin: 0 0 12px;
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.message {
+  margin: 0 0 8px;
+  font-size: 15px;
+  line-height: 1.4;
+}
+
+.actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+  margin-top: 20px;
+}
+
+.actionsWithTertiary {
+  composes: actions;
+  justify-content: space-between;
+}
+
+.actions button,
+.tertiaryButton {
+  border: none;
+  background: transparent;
+  padding: 8px 16px;
+  font-size: 14px;
+  font-weight: 600;
+  text-transform: uppercase;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.tertiaryButton {
+  color: var(--hs-accent, #1976d2);
+}
+
+.tertiaryButton:hover {
+  background: rgba(0, 0, 0, 0.06);
+}
+
+.cancelButton {
+  color: #000;
+}
+
+.cancelButton:hover {
+  background: rgba(0, 0, 0, 0.06);
+}
+
+.confirmButton {
+  color: var(--hs-accent, #1976d2);
+}
+
+.confirmButton:hover {
+  background: rgba(0, 0, 0, 0.06);
+}

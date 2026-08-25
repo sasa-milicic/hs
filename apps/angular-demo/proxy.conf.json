@@ -1,0 +1,7 @@
+{
+  "/hybridsign": {
+    "target": "https://services.post-business-solutions.at",
+    "changeOrigin": true,
+    "secure": true
+  }
+}

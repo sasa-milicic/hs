@@ -1,0 +1,136 @@
+.overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.4);
+}
+
+.dialog {
+  background: #fff;
+  color: #000;
+  border-radius: 4px;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.3);
+  padding: 24px;
+  /* Restored to legacy's real dialog width now that the full field set is
+     back — the earlier 420px was the direct, documented consequence of the
+     4-field scope cut (see the design doc's Phase 5 write-up), not an
+     independent visual choice. */
+  width: 700px;
+  max-width: calc(100vw - 32px);
+  box-sizing: border-box;
+}
+
+.title {
+  margin: 0 0 20px;
+  font-size: 20px;
+  font-weight: 500;
+}
+
+.error {
+  margin: 0 0 12px;
+  font-size: 13px;
+  color: #c62828;
+}
+
+.fields {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px 24px;
+}
+
+.input {
+  width: 100%;
+  padding: 8px 0;
+  font-size: 16px;
+  border: none;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.4);
+  background: transparent;
+  color: rgba(0, 0, 0, 0.87);
+  font-family: inherit;
+  box-sizing: border-box;
+}
+
+.input:disabled {
+  color: rgba(0, 0, 0, 0.38);
+  border-bottom-color: rgba(0, 0, 0, 0.2);
+}
+
+.input::placeholder {
+  color: rgba(0, 0, 0, 0.6);
+}
+
+.identificationSection {
+  margin-top: 16px;
+}
+
+.identificationTitle {
+  margin: 0 0 4px;
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.identificationSubtitle {
+  margin: 0 0 12px;
+  font-size: 13px;
+  color: rgba(0, 0, 0, 0.6);
+}
+
+.checkboxRow {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 16px;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.loading {
+  height: 140px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0.6;
+}
+
+.actions {
+  margin-top: 24px;
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+}
+
+.actions button {
+  border: none;
+  background: transparent;
+  padding: 8px 16px;
+  font-size: 14px;
+  font-weight: 700;
+  text-transform: uppercase;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.cancelButton {
+  color: #000;
+}
+
+.cancelButton:hover {
+  background: rgba(0, 0, 0, 0.06);
+}
+
+.sendButton {
+  color: var(--hs-accent, #1976d2);
+}
+
+.sendButton:hover:not(:disabled) {
+  background: rgba(0, 0, 0, 0.06);
+}
+
+.sendButton:disabled {
+  color: rgba(0, 0, 0, 0.38);
+  background: rgba(0, 0, 0, 0.12);
+  cursor: default;
+}

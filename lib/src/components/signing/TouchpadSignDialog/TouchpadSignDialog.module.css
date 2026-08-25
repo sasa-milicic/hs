@@ -1,0 +1,131 @@
+.overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.4);
+}
+
+.dialog {
+  background: #fff;
+  color: #000;
+  border-radius: 4px;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.3);
+  padding: 24px;
+  /* Sampled live from the legacy dialog's actual rendered width (932px,
+     matching its `minWidth: '932'` open() config) — an earlier pass guessed
+     600px from no source at all. */
+  width: 932px;
+  max-width: calc(100vw - 32px);
+  box-sizing: border-box;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.title {
+  font-size: 25px;
+  font-weight: 500;
+}
+
+.closeButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  border: none;
+  border-radius: 50%;
+  background: transparent;
+  color: #000;
+  opacity: 0.6;
+  cursor: pointer;
+}
+
+.closeButton:hover {
+  opacity: 1;
+  background: rgba(0, 0, 0, 0.04);
+}
+
+.navigation {
+  margin-top: 12px;
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+}
+
+.signatureText {
+  font-size: 15px;
+  font-weight: 400;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  max-width: 320px;
+}
+
+.signaturePage {
+  font-size: 15px;
+  color: rgba(0, 0, 0, 0.6);
+}
+
+.content {
+  margin-top: 20px;
+}
+
+.canvasHidden {
+  display: none;
+}
+
+.loading {
+  height: 300px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0.6;
+}
+
+.actions {
+  margin-top: 20px;
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+}
+
+.actions button {
+  border: none;
+  background: transparent;
+  padding: 8px 16px;
+  font-size: 14px;
+  font-weight: 700;
+  text-transform: uppercase;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.clearButton {
+  color: #000;
+}
+
+.clearButton:hover {
+  background: rgba(0, 0, 0, 0.06);
+}
+
+.submitButton {
+  color: var(--hs-accent, #1976d2);
+}
+
+.submitButton:hover:not(:disabled) {
+  background: rgba(0, 0, 0, 0.06);
+}
+
+.submitButton:disabled {
+  color: rgba(0, 0, 0, 0.38);
+  background: rgba(0, 0, 0, 0.12);
+  cursor: default;
+}

@@ -1,0 +1,130 @@
+/* Placeholder note removed for StampPlacer's own file — see that component's
+   CSS for the live-sampled values this shares (info message, page-jump
+   label, action buttons). Checkmark-specific parts (resize handle, checkbox
+   preview) remain unsampled — legacy has no direct equivalent to compare. */
+
+.placer {
+  position: absolute;
+  box-sizing: border-box;
+  border: 2px dashed var(--hs-accent, #1976d2);
+  z-index: 10;
+}
+
+.dragHandle {
+  position: absolute;
+  inset: 0;
+  cursor: grab;
+  touch-action: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.dragging .dragHandle {
+  cursor: grabbing;
+}
+
+.checkbox {
+  width: 60%;
+  height: 60%;
+  border: 2px solid var(--hs-accent, #1976d2);
+  background: #fff;
+  pointer-events: none;
+}
+
+.nameLabel {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+  color: var(--hs-accent, #1976d2);
+  text-align: center;
+  pointer-events: none;
+  padding: 2px;
+  overflow: hidden;
+}
+
+.resizeHandle {
+  position: absolute;
+  right: -6px;
+  bottom: -6px;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--hs-accent, #1976d2);
+  border: 2px solid #fff;
+  cursor: nwse-resize;
+  touch-action: none;
+  z-index: 11;
+}
+
+.topDecoration {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 100%;
+  margin-bottom: 8px;
+  display: flex;
+  justify-content: center;
+}
+
+.pageJumpLabel {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 16px;
+  color: #000;
+  background: transparent;
+  white-space: nowrap;
+}
+
+.pageJumpSelect {
+  font-size: 16px;
+}
+
+.bottomDecoration {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 100%;
+  margin-top: 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.infoMessage {
+  font-size: 16px;
+  color: #000;
+  background: #fff;
+  padding: 0 5px;
+  white-space: nowrap;
+}
+
+.actions {
+  display: flex;
+  gap: 8px;
+}
+
+.actions button {
+  border: none;
+  height: 36px;
+  padding: 0 16px;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.cancelButton {
+  background: #fff;
+  color: #000;
+}
+
+.confirmButton {
+  background: var(--hs-accent, #1976d2);
+  color: #fff;
+}
